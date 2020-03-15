@@ -60,8 +60,6 @@ public class fragment_menu1 extends Fragment {
                 list.add(jsonArray.getJSONObject(i));
                 cnt ++;
             }
-            Log.d("test", "-----------------------------");
-            Log.d("test", String.valueOf(list));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -76,12 +74,20 @@ public class fragment_menu1 extends Fragment {
         MyAdapter listViewAdatper = new MyAdapter();
 
         String img = null;
+        int r = 0;
         for(int i=0; i<cnt; i++){
             try {
                 Class<R.drawable> drawable = R.drawable.class;
-                img = list.get(i).getString("img");
-                Field field = drawable.getField( img );
-                int r = field.getInt(null);
+                String imgState = list.get(i).getString("img");
+                if (imgState != "null"){
+                    img = list.get(i).getString("img");
+
+                } else {
+                    img = "logo";
+                }
+                Log.d("test", img);
+                Field field = drawable.getField(img);
+                r = field.getInt(null);
                 listViewAdatper.addItem(ContextCompat.getDrawable(getActivity(), r), list.get(i).getString("title"), list.get(i).getString("subTitle") );
             } catch (JSONException | NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
