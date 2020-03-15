@@ -15,7 +15,8 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="현재 모임 목록 " />
+            android:text="현재 모임 목록 "
+            android:textSize="36sp"/>
 
         <ListView
             android:id="@+id/listView"
