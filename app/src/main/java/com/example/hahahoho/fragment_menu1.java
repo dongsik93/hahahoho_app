@@ -28,39 +28,13 @@ public class fragment_menu1 extends Fragment {
     InputStream source = null;
     String str = null;
     ArrayList<JSONObject> list = new ArrayList<JSONObject>();
-    JSONObject arr= null;
+    JSONObject arr = null;
     int cnt = 0;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // assets 장치검색
-        AssetManager assetManager = getResources().getAssets();
-
-        try {
-            // assets 폴더에서 해당 json을 가저옴
-            source = assetManager.open("hobby.json");
-            int i;
-            StringBuffer buffer = new StringBuffer(); byte[] b = new byte[4096];
-            while( (i = source.read(b)) != -1){
-                buffer.append(new String(b, 0, i));
-            }
-            str = buffer.toString();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        try {
-            arr = new JSONObject(str);
-            JSONArray jsonArray = arr.getJSONArray("Hobbies");
-            for (int i = 0; i < jsonArray.length(); i++) {
-                list.add(jsonArray.getJSONObject(i));
-                cnt ++;
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        parsingData();
     }
 
     @Nullable
@@ -71,22 +45,25 @@ public class fragment_menu1 extends Fragment {
         ListView listview = view.findViewById(R.id.listView);
         MyAdapter listViewAdatper = new MyAdapter();
 
-        String img = null;
-        int r = 0;
-        for(int i=0; i<cnt; i++){
+        String img;
+        int r;
+        for (int i = 0; i < cnt; i++) {
             try {
                 Class<R.drawable> drawable = R.drawable.class;
                 String imgState = list.get(i).getString("img");
-                if (imgState != "null"){
+                // img가 없으면 기본 이미지로 표시
+                if (imgState != "null") {
                     img = list.get(i).getString("img");
-
                 } else {
                     img = "logo";
                 }
-                Log.d("test", img);
+                // R.drawable.""를 해주기 위해서
                 Field field = drawable.getField(img);
                 r = field.getInt(null);
-                listViewAdatper.addItem(ContextCompat.getDrawable(getActivity(), r), list.get(i).getString("title"), list.get(i).getString("subTitle") );
+                listViewAdatper.addItem(
+                        ContextCompat.getDrawable(getActivity(), r),
+                        list.get(i).getString("title"),
+                        list.get(i).getString("subTitle"));
             } catch (JSONException | NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
             }
@@ -97,10 +74,34 @@ public class fragment_menu1 extends Fragment {
         return view;
     }
 
+    public void parsingData() {
+        // assets 장치검색
+        AssetManager assetManager = getResources().getAssets();
+
+        try {
+            // assets 폴더에서 해당 json을 가저옴
+            source = assetManager.open("hobby.json");
+            int i;
+            StringBuffer buffer = new StringBuffer();
+            byte[] b = new byte[4096];
+            while ((i = source.read(b)) != -1) {
+                buffer.append(new String(b, 0, i));
+            }
+            str = buffer.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            arr = new JSONObject(str);
+            JSONArray jsonArray = arr.getJSONArray("Hobbies");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                list.add(jsonArray.getJSONObject(i));
+                cnt++;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
-class Hobby {
-    String title;
-    String subTitle;
-    String img;
-}

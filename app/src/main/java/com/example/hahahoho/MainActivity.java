@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
         setSupportActionBar(toolbar);
+
         // Bottom nav
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
         // 첫화면 지정
@@ -50,23 +51,30 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                switch (menuItem.getItemId()) {
-                    case R.id.menu1: {
-                        transaction.replace(R.id.fragment, menu1Fragment).commitAllowingStateLoss();
-                        break;
-                    }
-                    case R.id.menu2: {
-                        transaction.replace(R.id.fragment, menu2Fragment).commitAllowingStateLoss();
-                        break;
-                    }
-                    case R.id.menu3: {
-                        transaction.replace(R.id.fragment, menu3Fragment).commitAllowingStateLoss();
-                        break;
-                    }
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            switch (menuItem.getItemId()) {
+                case R.id.menu1: {
+                    transaction.replace(R.id.fragment, menu1Fragment).commitAllowingStateLoss();
+                    break;
                 }
-                return true;
+                case R.id.menu2: {
+                    transaction.replace(R.id.fragment, menu2Fragment).commitAllowingStateLoss();
+                    break;
+                }
+                case R.id.menu3: {
+                    transaction.replace(R.id.fragment, menu3Fragment).commitAllowingStateLoss();
+                    break;
+                }
+            }
+            return true;
             }
         });
+    }
+
+    // 툴바 생성
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.appbar_menu, menu);
+        return true;
     }
 }

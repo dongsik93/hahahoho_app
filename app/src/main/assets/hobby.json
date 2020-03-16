@@ -11,7 +11,7 @@
       "img": "post2"
     },
     {
-      "title": "모각코 모",
+      "title": "모각코 모집",
       "subTitle": "모각코 인원 모집합니다 !!",
       "img": "post3"
     },
@@ -33,6 +33,16 @@
     {
       "title": "손글씨 배울래요?",
       "subTitle": "손글씨 가르쳐 드립니다 ~ ",
+      "img": null
+    },
+    {
+      "title": "밴드연주 ㄲㄲ",
+      "subTitle": "주말마다 연주 ㄱㄱ? ",
+      "img": null
+    },
+    {
+      "title": "롤 5인팟 구함",
+      "subTitle": "나 잘함 ",
       "img": null
     }
   ]

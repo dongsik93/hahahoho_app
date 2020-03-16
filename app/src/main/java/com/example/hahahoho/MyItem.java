@@ -4,32 +4,32 @@ import android.graphics.drawable.Drawable;
 
 public class MyItem {
 
-    private Drawable icon;
-    private String name;
-    private String contents;
+    private Drawable img;
+    private String title;
+    private String subTitle;
 
-    public Drawable getIcon() {
-        return icon;
+    public Drawable getImg() {
+        return img;
     }
 
-    public void setIcon(Drawable icon) {
-        this.icon = icon;
+    public void setImg(Drawable img) {
+        this.img = img;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getContents() {
-        return contents;
+    public String getSubTitle() {
+        return subTitle;
     }
 
-    public void setContents(String contents) {
-        this.contents = contents;
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
     }
 
 }
