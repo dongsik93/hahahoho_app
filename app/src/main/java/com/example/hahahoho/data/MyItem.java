@@ -1,4 +1,4 @@
-package com.example.hahahoho;
+package com.example.hahahoho.data;
 
 import android.graphics.drawable.Drawable;
 
@@ -31,5 +31,4 @@ public class MyItem {
     public void setSubTitle(String subTitle) {
         this.subTitle = subTitle;
     }
-
 }

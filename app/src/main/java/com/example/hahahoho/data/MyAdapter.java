@@ -1,4 +1,4 @@
-package com.example.hahahoho;
+package com.example.hahahoho.data;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.hahahoho.R;
 
 import java.util.ArrayList;
 
@@ -36,18 +38,18 @@ public class MyAdapter extends BaseAdapter{
 
         Context context = parent.getContext();
 
-        // 'listview_custom' Layout을 inflate하여 convertView 참조 획득
+        // list_item Layout을 inflate하여 convertView 참조 획득
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_item, parent, false);
         }
 
-        // 'listview_custom'에 정의된 위젯에 대한 참조 획득
-        ImageView iv_img = (ImageView) convertView.findViewById(R.id.imageView) ;
-        TextView tv_name = (TextView) convertView.findViewById(R.id.textView1) ;
-        TextView tv_contents = (TextView) convertView.findViewById(R.id.textView2) ;
+        // list_item에 정의된 위젯에 대한 참조 획득
+        ImageView iv_img = convertView.findViewById(R.id.imageView) ;
+        TextView tv_name =  convertView.findViewById(R.id.textView1) ;
+        TextView tv_contents = convertView.findViewById(R.id.textView2) ;
 
-        // 각 리스트에 뿌려줄 아이템을 받아오는데 mMyItem 재활용
+        // 각 리스트에 뿌려줄 아이템을 받아오는데 myItem 재활용
         MyItem myItem = getItem(position);
 
         // 각 위젯에 세팅된 아이템을 뿌려준다
@@ -55,8 +57,7 @@ public class MyAdapter extends BaseAdapter{
         tv_name.setText(myItem.getTitle());
         tv_contents.setText(myItem.getSubTitle());
 
-        // (위젯에 대한 이벤트리스너를 지정하고 싶다면 여기에 작성하면된다..)
-
+        // 위젯 이벤트 리스너
 
         return convertView;
     }

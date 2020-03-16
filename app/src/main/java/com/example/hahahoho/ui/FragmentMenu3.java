@@ -1,4 +1,4 @@
-package com.example.hahahoho;
+package com.example.hahahoho.ui;
 
 import android.os.Bundle;
 
@@ -10,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.hahahoho.R;
 
-public class fragment_menu3 extends Fragment {
+
+public class FragmentMenu3 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

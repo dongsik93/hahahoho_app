@@ -4,8 +4,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 
+import com.example.hahahoho.ui.FragmentMenu1;
+import com.example.hahahoho.ui.FragmentMenu2;
+import com.example.hahahoho.ui.FragmentMenu3;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -14,24 +16,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.fragment.app.ListFragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager = getSupportFragmentManager();
-    private fragment_menu1 menu1Fragment = new fragment_menu1();
-    private fragment_menu2 menu2Fragment = new fragment_menu2();
-    private fragment_menu3 menu3Fragment = new fragment_menu3();
+    private FragmentMenu1 menu1Fragment = new FragmentMenu1();
+    private FragmentMenu2 menu2Fragment = new FragmentMenu2();
+    private FragmentMenu3 menu3Fragment = new FragmentMenu3();
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    // 이 한줄의 의미
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         // Bottom nav
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
         // 첫화면 지정
+        // 두줄 알아보기
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment, menu1Fragment).commitAllowingStateLoss();
 
